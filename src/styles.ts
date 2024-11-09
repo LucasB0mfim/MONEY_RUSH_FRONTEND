@@ -1,7 +1,11 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 type ErrorProps = {
-  isError: boolean
+  isError?: boolean
+}
+
+type RegisterProps = {
+  isScreenRegister?: boolean
 }
 
 
@@ -78,7 +82,7 @@ export const Main = styled.main<ErrorProps>`
 
   display: flex;
   flex-direction: column;
-  justify-content: ${(props) => props.isError ? 'center' : 'space-between'};
+  justify-content: center;
 
   background: ${colors.transparentBackground};
   box-shadow: 0px 4px 8px ${colors.transparentBlack};
@@ -91,7 +95,7 @@ export const Main = styled.main<ErrorProps>`
   > p {
     color: ${colors.grayLight};
     font-size: 1.09vw;
-    margin-top: ${(props) => props.isError ? '9%' : 'none'};
+    margin: 10% 0;
   }
 `
 
@@ -100,8 +104,6 @@ export const Form = styled.form<ErrorProps>`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-
-  margin-top: ${(props) => props.isError ? '9%' : 'none'};
 `
 
 export const Input = styled.input<ErrorProps>`
@@ -133,6 +135,7 @@ export const BtnEnter = styled.button`
   padding: 3.2%;
   cursor: pointer;
   font-size: 0.98vw;
+  margin-top: 2vw;
 
   border: none;
   outline: none;
@@ -141,12 +144,13 @@ export const BtnEnter = styled.button`
   background: ${colors.redDark};
 `
 
-export const BtnCreate = styled.button`
+export const BtnCreate = styled.button<RegisterProps>`
 color: ${colors.white};
   width: 100%;
   padding: 3.2%;
   cursor: pointer;
   font-size: 0.98vw;
+  margin-top: ${(props) => props.isScreenRegister ? '2vw' : '0px'};
 
   outline: none;
   border: none;
