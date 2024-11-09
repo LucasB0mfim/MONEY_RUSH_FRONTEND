@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <S.Container>
       <h1>{nomeDoUsuario}</h1>
-      <S.Btn type='button'><a href="/">Sair</a></S.Btn>
+      <a href="access-account"><S.Btn>Sair</S.Btn></a>
     </S.Container>
   )
 }

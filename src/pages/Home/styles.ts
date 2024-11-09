@@ -17,21 +17,22 @@ export const Container = styled.div`
   h1 {
     color: ${colors.white};
   }
+
+  a {
+
+    text-decoration: none;
+    margin-top: 5%;
+  }
 `
 
 export const Btn = styled.button`
 height: 40px;
 width: 100px;
+cursor: pointer;
+color: ${colors.white};
 
 border: none;
-cursor: pointer;
-margin-top: 5%;
 border-radius: 2vw;
 background: ${colors.tangerina};
 box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-
-  a {
-    color: ${colors.white};
-    text-decoration: none;
-  }
 `
