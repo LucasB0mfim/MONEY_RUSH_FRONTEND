@@ -35,7 +35,7 @@ const Login = () => {
         console.log(usuario);  // A resposta já inclui o nome, id, etc.
 
         // Armazenando o usuário no Redux
-        dispatch(setUsuario({ nome: usuario.nome, id: usuario.id, email: usuario.email }));
+        dispatch(setUsuario({ nome: usuario.nome, id: usuario.id, email: usuario.email, username: usuario.username }));
 
         navigate(`/home/${usuario.id}`);  // Navega para a home passando o id do usuário
       } catch (error) {

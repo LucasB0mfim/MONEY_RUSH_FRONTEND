@@ -10,7 +10,7 @@ type Usuario = {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/usuario/',
+    baseUrl: 'https://money-rush-backend.onrender.com/usuario/',
   }),
   endpoints: (builder) => ({
     cadastrarUsuario: builder.mutation<Usuario, Usuario>({ // Retorna um Usuario
@@ -22,9 +22,9 @@ const api = createApi({
     }),
     logarUsuario: builder.mutation<Usuario, { email: string; senha: string }>({ // Retorna um Usuario
       query: (credentials) => ({
-        url: 'login', // Chama a rota de login no backend
+        url: 'login',
         method: 'POST',
-        body: credentials, // Envia o email e senha
+        body: credentials,
       }),
     }),
   }),
