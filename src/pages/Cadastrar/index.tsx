@@ -8,9 +8,11 @@ import { useCadastrarUsuarioMutation } from '../../services/api';
 import wallet from '../../assets/images/whiteWallet.png';
 
 import * as S from '../../styles';
+import { useEffect, useState } from 'react';
 
 const Cadastrar = () => {
   const navigate = useNavigate();
+  const [back, setBack] = useState(true)
   const [registerUser, { isLoading, isSuccess, isError, error }] = useCadastrarUsuarioMutation();
 
   const form = useFormik({
@@ -39,15 +41,18 @@ const Cadastrar = () => {
 
   const capturarError = (error: any) => {
     if ('data' in error && error.data) {
-      // O erro pode estar em error.data
       return error.data?.message || 'Erro desconhecido';
-    }
-    if (error?.message) {
-      // Caso seja um SerializedError, acessar a mensagem diretamente
+    } else if (error?.message) {
       return error.message;
     }
     return 'Erro desconhecido';
   }
+
+  useEffect( () => {
+    if (!back) {
+      navigate('/access-account')
+    }
+  }, [back, navigate])
 
   return (
     <S.Container>
@@ -74,7 +79,8 @@ const Cadastrar = () => {
           <S.Input type="password" placeholder="Digite sua senha" id="senha" name="senha" value={form.values.senha} onChange={form.handleChange} onBlur={form.handleBlur} isError={!!(form.touched.senha && form.errors.senha)} />
           {form.touched.senha && form.errors.senha && <S.Error>{form.errors.senha}</S.Error>}
 
-          <S.BtnCreate type="submit" isScreenRegister={true}> {isLoading ? <Loader /> : 'Cadastrar'} </S.BtnCreate>
+          <S.BtnEnter type="submit"> {isLoading ? <Loader /> : 'Cadastrar'} </S.BtnEnter>
+          <S.BtnCreate type="button" onClick={ () => setBack(false)}>{back ? 'Voltar' : <Loader />}</S.BtnCreate>
           {isError && <S.Error>{capturarError(error)}</S.Error>}
         </S.Form>
       </S.Main>

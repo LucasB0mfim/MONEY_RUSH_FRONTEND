@@ -8,6 +8,9 @@ type RegisterProps = {
   isScreenRegister?: boolean
 }
 
+type LoginProps = {
+  isLogin?: boolean
+}
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -144,13 +147,12 @@ export const BtnEnter = styled.button`
   background: ${colors.redDark};
 `
 
-export const BtnCreate = styled.button<RegisterProps>`
+export const BtnCreate = styled.button`
 color: ${colors.white};
   width: 100%;
   padding: 3.2%;
   cursor: pointer;
   font-size: 0.98vw;
-  margin-top: ${(props) => props.isScreenRegister ? '2vw' : '0px'};
 
   outline: none;
   border: none;
@@ -159,9 +161,13 @@ color: ${colors.white};
   border: solid 0.1vw ${colors.white};
 `
 
-export const Error = styled.div`
+export const Error = styled.div<LoginProps>`
   width: 100%;
   font-size: 1vw;
   margin-bottom: 1.08%;
-  color: ${colors.redDark};
+  color: ${(props) => props.isLogin ? `${colors.white}` : `${colors.redDark}`};
+
+  display: ${ (props) => props.isLogin ? 'flex' : 'inline'};
+  justify-content: ${(props) => props.isLogin ? 'center' : 'none'};
+  margin-top: ${(props) => props.isLogin ? '2vw' : '0px'};
 `

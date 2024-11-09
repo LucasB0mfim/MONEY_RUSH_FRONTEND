@@ -32,12 +32,12 @@ const Login = () => {
     onSubmit: async (values) => {
       try {
         const usuario = await logarUsuario({ email: values.email, senha: values.senha }).unwrap();
-        console.log(usuario);  // A resposta já inclui o nome, id, etc.
+        console.log(usuario);
 
         // Armazenando o usuário no Redux
         dispatch(setUsuario({ nome: usuario.nome, id: usuario.id, email: usuario.email, username: usuario.username }));
 
-        navigate(`/home/${usuario.id}`);  // Navega para a home passando o id do usuário
+        navigate(`/home/${usuario.id}`);
       } catch (error) {
         console.error('Erro ao logar:', error);
       }
@@ -52,14 +52,11 @@ const Login = () => {
 
   const capturarError = (error: any) => {
     if ('data' in error && error.data) {
-      // O erro pode estar em error.data
-      return error.data?.message || 'Erro desconhecido';
-    }
-    if (error?.message) {
-      // Caso seja um SerializedError, acessar a mensagem diretamente
+      return error.data?.message || 'Seu e-mail ou senha podem estar incorretos.';
+    } else if (error?.message) {
       return error.message;
     }
-    return 'Erro desconhecido';
+    return 'Erro desconhecido! Contatar o administrador.';
   }
 
   return (
@@ -83,7 +80,7 @@ const Login = () => {
 
           <S.BtnEnter type="submit">{isLoading ? <Loader /> : 'Entrar'}</S.BtnEnter>
           <S.BtnCreate type="button" onClick={() => setCreate(false)}>{create ? 'Criar minha conta' : <Loader />}</S.BtnCreate>
-          {isError && <S.Error>{capturarError(error)}</S.Error>}
+          {isError && <S.Error isLogin={true}>{capturarError(error)}</S.Error>}
         </S.Form>
       </S.Main>
     </S.Container>
