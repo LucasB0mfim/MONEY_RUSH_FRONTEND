@@ -9,9 +9,12 @@ import wallet from '../../assets/images/whiteWallet.png';
 
 import * as S from '../../styles';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUsuario } from '../../store/reducers/usuarioSlice';
 
 const Cadastrar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [back, setBack] = useState(true)
   const [registerUser, { isLoading, isSuccess, isError, error }] = useCadastrarUsuarioMutation();
 
@@ -32,6 +35,14 @@ const Cadastrar = () => {
       try {
         const response = await registerUser(values).unwrap();
         console.log('Usuário cadastrado com sucesso:', response);
+
+        dispatch(setUsuario({
+          id: response.id,
+          nome: response.nome,
+          email: response.email,
+          username: response.username,
+        }));
+
         navigate('/registered-account');
       } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);

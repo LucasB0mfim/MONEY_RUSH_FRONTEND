@@ -107,14 +107,14 @@ export const Main = styled.main<ErrorProps>`
   box-shadow: 0px 4px 8px ${colors.transparentBlack};
 
   > h2 {
-    color: ${colors.white};
     font-size: 1.63vw;
+    color: ${colors.white};
   }
 
   > p {
-    color: ${colors.grayLight};
-    font-size: 1.09vw;
     margin: 10% 0;
+    font-size: 1.09vw;
+    color: ${colors.white};
   }
 
   @media(max-width: ${breakpoints.tablet}) {
@@ -127,9 +127,8 @@ export const Main = styled.main<ErrorProps>`
     }
 
     > p {
-      font-size: 140%;
       margin: 4% 0;
-      color: ${colors.white};
+      font-size: 120%;
     }
   }
 
@@ -144,8 +143,8 @@ export const Main = styled.main<ErrorProps>`
     }
 
     > p {
-      font-size: 80%;
       margin: 10% 0;
+      font-size: 80%;
       text-align: center;
     }
   }
@@ -203,14 +202,14 @@ export const Input = styled.input<ErrorProps>`
   }
 
   @media(max-width: ${breakpoints.tablet}) {
-    font-size: 100%;
     padding: 2.8%;
+    font-size: 100%;
     margin-bottom: 0.5%;
   }
 
   @media(max-width: ${breakpoints.mobile}) {
-    font-size: 2.5vw;
     padding: 4%;
+    font-size: 60%;
     margin-bottom: 1.08%;
   }
 `
@@ -254,13 +253,13 @@ color: ${colors.white};
   border: solid 0.1vw ${colors.white};
 
   @media(max-width: ${breakpoints.tablet}) {
-    font-size: 100%;
     padding: 2.8%;
+    font-size: 100%;
   }
 
   @media(max-width: ${breakpoints.mobile}) {
-    font-size: 80%;
     padding: 4%;
+    font-size: 80%;
   }
 `
 
