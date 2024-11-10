@@ -205,12 +205,14 @@ export const Input = styled.input<ErrorProps>`
     padding: 2.8%;
     font-size: 100%;
     margin-bottom: 0.5%;
+    border-radius: 0.5vw;
   }
 
   @media(max-width: ${breakpoints.mobile}) {
     padding: 4%;
-    font-size: 60%;
+    font-size: 70%;
     margin-bottom: 1.08%;
+    border-radius: 0.5vh;
   }
 `
 
@@ -231,11 +233,13 @@ export const BtnEnter = styled.button`
   @media(max-width: ${breakpoints.tablet}) {
     padding: 2.8%;
     font-size: 100%;
+    border-radius: 0.5vw;
   }
 
   @media(max-width: ${breakpoints.mobile}) {
     padding: 4%;
     font-size: 80%;
+    border-radius: 0.5vh;
   }
 `
 
@@ -255,11 +259,13 @@ color: ${colors.white};
   @media(max-width: ${breakpoints.tablet}) {
     padding: 2.8%;
     font-size: 100%;
+    border-radius: 0.5vw;
   }
 
   @media(max-width: ${breakpoints.mobile}) {
     padding: 4%;
     font-size: 80%;
+    border-radius: 0.5vh;
   }
 `
 
