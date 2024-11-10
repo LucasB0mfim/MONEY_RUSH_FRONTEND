@@ -12,7 +12,7 @@ export const Container = styled.div`
 
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background: linear-gradient(140deg, ${colors.douradoClaro} 10%, ${colors.tangerina} 30%, ${colors.redPurpura} 60%);
+  background: linear-gradient(140deg, ${colors.lightGold} 10%, ${colors.tangerina} 30%, ${colors.redPurpura} 60%);
 
   h1 {
     color: ${colors.white};

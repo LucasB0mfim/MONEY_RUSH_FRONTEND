@@ -21,14 +21,20 @@ export const colors = {
   white: '#fff',
   gray: '#c2c2c2',
   grayLight: '#dddddd',
-  douradoClaro: '#F9D423',
+  lightGold: '#F9D423',
+  darkGold: '#D4B01D',
   tangerina: '#F97300',
   redPurpura: '#D61A3C',
   red: '#B21632',
-  redDark: '#9F142C',
+  darkRed: '#9F142C',
   transparentBackground: 'rgba(255, 255, 255, 0.1)',
   transparentGray: 'rgba(255, 255, 255, 0.5)',
   transparentBlack: 'rgba(0, 0, 0, 0.2)'
+}
+
+export const breakpoints = {
+  mobileDown: '1024px',
+  mobileUp: '412px'
 }
 
 export const Container = styled.div`
@@ -40,7 +46,17 @@ export const Container = styled.div`
 
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background: linear-gradient(140deg, ${colors.douradoClaro} 10%, ${colors.tangerina} 30%, ${colors.redPurpura} 60%);
+
+  //background: linear-gradient(140deg, ${colors.lightGold} 10%, ${colors.tangerina} 30%, ${colors.redPurpura} 60%);
+
+  // Talvez esse seja melhor:
+  background: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 60%);
+
+  @media(max-width: ${breakpoints.mobileDown}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 export const Aside = styled.aside`
@@ -54,6 +70,10 @@ export const Aside = styled.aside`
     color: ${colors.white};
     font-size: 4.7vw;
     font-weight: bold;
+  }
+
+  @media (max-width: ${breakpoints.mobileDown}) {
+    display: none;
   }
 `
 
@@ -96,6 +116,39 @@ export const Main = styled.main<ErrorProps>`
     font-size: 1.09vw;
     margin: 10% 0;
   }
+
+  @media(max-width: ${breakpoints.mobileDown}) {
+    width: 96%;
+    height: 90%;
+    padding: 2%;
+
+    > h2 {
+      font-size: 3vw;
+    }
+
+    > p {
+      font-size: 1.6vw;
+      margin: 4% 0;
+      color: ${colors.white};
+    }
+  }
+
+  @media(max-width: ${breakpoints.mobileUp}) {
+    height: 60%;
+    width: 80%;
+    padding: 4%;
+
+    > h2 {
+      font-size: 6vw;
+      text-align: center;
+    }
+
+    > p {
+      font-size: 3vw;
+      margin: 10% 0;
+      text-align: center;
+    }
+  }
 `
 
 export const Form = styled.form<ErrorProps>`
@@ -103,6 +156,28 @@ export const Form = styled.form<ErrorProps>`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
+  @media(max-width: ${breakpoints.mobileDown}) {
+    display: inline;
+    padding-right: 10px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+
+    /* Largura da barra de rolagem */
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    /* Cor do controle da barra de rolagem */
+    &::-webkit-scrollbar-thumb {
+      background: ${colors.white};
+      border-radius: 10px;
+    }
+  }
+
+  @media(max-width: ${breakpoints.mobileUp}) {
+    padding: 0;
+  }
 `
 
 export const Input = styled.input<ErrorProps>`
@@ -115,7 +190,7 @@ export const Input = styled.input<ErrorProps>`
   margin-bottom: 1.08%;
   border-radius: 0.3vw;
   background: ${colors.red};
-  border: ${(props) => props.isError ? `0.2vw solid ${colors.redDark}` : 'none'};
+  border: ${(props) => props.isError ? `0.2vw solid ${colors.darkRed}` : 'none'};
 
   &::placeholder {
     color: ${colors.transparentGray};
@@ -126,6 +201,18 @@ export const Input = styled.input<ErrorProps>`
     box-shadow: 0 0 0px 1000px ${colors.red} inset !important;
     -webkit-text-fill-color: ${colors.white} !important;
   }
+
+  @media(max-width: ${breakpoints.mobileDown}) {
+    font-size: 1.5vw;
+    padding: 1.5%;
+    margin-bottom: 0.5%;
+  }
+
+  @media(max-width: ${breakpoints.mobileUp}) {
+    font-size: 2.5vw;
+    padding: 3.2%;
+    margin-bottom: 1.08%;
+  }
 `
 
 export const BtnEnter = styled.button`
@@ -135,12 +222,26 @@ export const BtnEnter = styled.button`
   cursor: pointer;
   font-size: 0.98vw;
   margin-top: 2vw;
+  margin-bottom: 1.08%;
 
   border: none;
   outline: none;
-  margin-bottom: 1.08%;
   border-radius: 0.3vw;
-  background: ${colors.redDark};
+  background: ${colors.darkRed};
+
+  @media(max-width: ${breakpoints.mobileDown}) {
+    padding: 1.5%;
+    margin-top: 0px;
+    font-size: 1.5vw;
+    margin-bottom: 0.5%;
+  }
+
+  @media(max-width: ${breakpoints.mobileUp}) {
+    padding: 3.2%;
+    font-size: 2.5vw;
+    margin-top: 2.0vw;
+    margin-bottom: 1.08%;
+  }
 `
 
 export const BtnCreate = styled.button`
@@ -155,13 +256,23 @@ color: ${colors.white};
   border-radius: 0.3vw;
   background: transparent;
   border: solid 0.1vw ${colors.white};
+
+  @media(max-width: ${breakpoints.mobileDown}) {
+    font-size: 1.5vw;
+    padding: 1.5%;
+  }
+
+  @media(max-width: ${breakpoints.mobileUp}) {
+    font-size: 2.5vw;
+    padding: 3.2%;
+  }
 `
 
 export const Error = styled.div<LoginProps>`
   width: 100%;
   font-size: 1vw;
   margin-bottom: 1.08%;
-  color: ${(props) => props.isLogin ? `${colors.white}` : `${colors.redDark}`};
+  color: ${(props) => props.isLogin ? `${colors.white}` : `${colors.darkRed}`};
 
   display: ${ (props) => props.isLogin ? 'flex' : 'inline'};
   justify-content: ${(props) => props.isLogin ? 'center' : 'none'};

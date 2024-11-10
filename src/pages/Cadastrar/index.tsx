@@ -54,6 +54,14 @@ const Cadastrar = () => {
     }
   }, [back, navigate])
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("meuFormulario") as HTMLFormElement | null;
+
+    if (form) {
+      form.scrollTop = 0;
+    }
+  });
+
   return (
     <S.Container>
       <S.Aside>
