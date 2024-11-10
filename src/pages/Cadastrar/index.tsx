@@ -73,7 +73,7 @@ const Cadastrar = () => {
       </S.Aside>
       <S.Main isError={Object.keys(form.errors).length > 0}>
         <h2>Cadastrar</h2>
-        <p>Preencha os campos abaixo para se cadastrar</p>
+        <p>Preencha os campos abaixo para se cadastrar:</p>
         <S.Form onSubmit={form.handleSubmit} isError={Object.keys(form.errors).length > 0}>
           <S.Input type="text" placeholder="Digite seu nome completo" id="nome" name="nome" value={form.values.nome} onChange={form.handleChange} onBlur={form.handleBlur} isError={!!(form.touched.nome && form.errors.nome)} />
           {form.touched.nome && form.errors.nome && <S.Error>{form.errors.nome}</S.Error>}

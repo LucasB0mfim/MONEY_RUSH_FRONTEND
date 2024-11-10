@@ -70,7 +70,7 @@ const Login = () => {
       </S.Aside>
       <S.Main isError={Object.keys(form.errors).length > 0}>
         <h2>Login</h2>
-        <p>Preencha os campos abaixo com os seus dados de acesso</p>
+        <p>Preencha os campos abaixo com os seus dados de acesso:</p>
         <S.Form onSubmit={form.handleSubmit} isError={Object.keys(form.errors).length > 0}>
           <S.Input type="email" placeholder='Digite seu e-mail' id='email' name='email' value={form.values.email} onChange={form.handleChange} onBlur={form.handleBlur} isError={!!(form.touched.email && form.errors.email)} />
           {form.touched.email && form.errors.email && <S.Error>{form.errors.email}</S.Error>}

@@ -33,8 +33,8 @@ export const colors = {
 }
 
 export const breakpoints = {
-  mobileDown: '1024px',
-  mobileUp: '412px'
+  tablet: '1024px',
+  mobile: '412px'
 }
 
 export const Container = styled.div`
@@ -52,7 +52,7 @@ export const Container = styled.div`
   // Talvez esse seja melhor:
   background: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 60%);
 
-  @media(max-width: ${breakpoints.mobileDown}) {
+  @media(max-width: ${breakpoints.tablet}) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -72,7 +72,7 @@ export const Aside = styled.aside`
     font-weight: bold;
   }
 
-  @media (max-width: ${breakpoints.mobileDown}) {
+  @media (max-width: ${breakpoints.tablet}) {
     display: none;
   }
 `
@@ -117,34 +117,34 @@ export const Main = styled.main<ErrorProps>`
     margin: 10% 0;
   }
 
-  @media(max-width: ${breakpoints.mobileDown}) {
-    width: 96%;
+  @media(max-width: ${breakpoints.tablet}) {
+    width: 90%;
     height: 90%;
     padding: 2%;
 
     > h2 {
-      font-size: 3vw;
+      font-size: 200%;
     }
 
     > p {
-      font-size: 1.6vw;
+      font-size: 140%;
       margin: 4% 0;
       color: ${colors.white};
     }
   }
 
-  @media(max-width: ${breakpoints.mobileUp}) {
+  @media(max-width: ${breakpoints.mobile}) {
     height: 60%;
     width: 80%;
     padding: 4%;
 
     > h2 {
-      font-size: 6vw;
+      font-size: 200%;
       text-align: center;
     }
 
     > p {
-      font-size: 3vw;
+      font-size: 80%;
       margin: 10% 0;
       text-align: center;
     }
@@ -157,7 +157,7 @@ export const Form = styled.form<ErrorProps>`
   flex-direction: column;
   justify-content: center;
 
-  @media(max-width: ${breakpoints.mobileDown}) {
+  @media(max-width: ${breakpoints.tablet}) {
     display: inline;
     padding-right: 10px;
     overflow-y: auto;
@@ -175,7 +175,7 @@ export const Form = styled.form<ErrorProps>`
     }
   }
 
-  @media(max-width: ${breakpoints.mobileUp}) {
+  @media(max-width: ${breakpoints.mobile}) {
     padding: 0;
   }
 `
@@ -202,15 +202,15 @@ export const Input = styled.input<ErrorProps>`
     -webkit-text-fill-color: ${colors.white} !important;
   }
 
-  @media(max-width: ${breakpoints.mobileDown}) {
-    font-size: 1.5vw;
-    padding: 1.5%;
+  @media(max-width: ${breakpoints.tablet}) {
+    font-size: 100%;
+    padding: 2.8%;
     margin-bottom: 0.5%;
   }
 
-  @media(max-width: ${breakpoints.mobileUp}) {
+  @media(max-width: ${breakpoints.mobile}) {
     font-size: 2.5vw;
-    padding: 3.2%;
+    padding: 4%;
     margin-bottom: 1.08%;
   }
 `
@@ -229,18 +229,14 @@ export const BtnEnter = styled.button`
   border-radius: 0.3vw;
   background: ${colors.darkRed};
 
-  @media(max-width: ${breakpoints.mobileDown}) {
-    padding: 1.5%;
-    margin-top: 0px;
-    font-size: 1.5vw;
-    margin-bottom: 0.5%;
+  @media(max-width: ${breakpoints.tablet}) {
+    padding: 2.8%;
+    font-size: 100%;
   }
 
-  @media(max-width: ${breakpoints.mobileUp}) {
-    padding: 3.2%;
-    font-size: 2.5vw;
-    margin-top: 2.0vw;
-    margin-bottom: 1.08%;
+  @media(max-width: ${breakpoints.mobile}) {
+    padding: 4%;
+    font-size: 80%;
   }
 `
 
@@ -257,14 +253,14 @@ color: ${colors.white};
   background: transparent;
   border: solid 0.1vw ${colors.white};
 
-  @media(max-width: ${breakpoints.mobileDown}) {
-    font-size: 1.5vw;
-    padding: 1.5%;
+  @media(max-width: ${breakpoints.tablet}) {
+    font-size: 100%;
+    padding: 2.8%;
   }
 
-  @media(max-width: ${breakpoints.mobileUp}) {
-    font-size: 2.5vw;
-    padding: 3.2%;
+  @media(max-width: ${breakpoints.mobile}) {
+    font-size: 80%;
+    padding: 4%;
   }
 `
 
@@ -277,4 +273,12 @@ export const Error = styled.div<LoginProps>`
   display: ${ (props) => props.isLogin ? 'flex' : 'inline'};
   justify-content: ${(props) => props.isLogin ? 'center' : 'none'};
   margin-top: ${(props) => props.isLogin ? '2vw' : '0px'};
+
+  @media(max-width: ${breakpoints.tablet}) {
+    font-size: 100%;
+  }
+
+  @media(max-width: ${breakpoints.mobile}) {
+    font-size: 80%;
+  }
 `
