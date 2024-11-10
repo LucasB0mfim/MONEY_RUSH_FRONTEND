@@ -4,10 +4,6 @@ type ErrorProps = {
   isError?: boolean
 }
 
-type RegisterProps = {
-  isScreenRegister?: boolean
-}
-
 type LoginProps = {
   isLogin?: boolean
 }
@@ -119,7 +115,7 @@ export const Input = styled.input<ErrorProps>`
   margin-bottom: 1.08%;
   border-radius: 0.3vw;
   background: ${colors.red};
-  border: ${(props) => props.isError ? '0.2vw solid #9F142C' : 'none'};
+  border: ${(props) => props.isError ? `0.2vw solid ${colors.redDark}` : 'none'};
 
   &::placeholder {
     color: ${colors.transparentGray};

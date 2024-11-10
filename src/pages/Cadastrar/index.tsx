@@ -61,7 +61,7 @@ const Cadastrar = () => {
           <img src={wallet} alt="Icon" />
           <h1>MONEYRUSH</h1>
         </S.DivLogo>
-        <p>O JEITO MAIS INTELIGENTE<br />DE CONTROLAR OS<br />GASTOS</p>
+        <p>O JEITO MAIS INTELIGENTE<br />DE CONTROLAR O SEU<br />DINHEIRO</p>
       </S.Aside>
       <S.Main isError={Object.keys(form.errors).length > 0}>
         <h2>Cadastrar</h2>
