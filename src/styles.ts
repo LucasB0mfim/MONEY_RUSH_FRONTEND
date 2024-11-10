@@ -287,3 +287,21 @@ export const Error = styled.div<LoginProps>`
     font-size: 80%;
   }
 `
+
+export const Warning = styled.div`
+  width: 100%;
+  font-size: 90%;
+  margin-bottom: 1.08%;
+  color: ${colors.white};
+
+  text-align: center;
+  margin-top: 10%;
+
+  @media(max-width: ${breakpoints.tablet}) {
+    font-size: 100%;
+  }
+
+  @media(max-width: ${breakpoints.mobile}) {
+    font-size: 80%;
+  }
+`

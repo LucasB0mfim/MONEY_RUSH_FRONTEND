@@ -14,11 +14,11 @@ import * as S from '../../styles'
 
 const Login = () => {
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [access, setAccess] = useState(true)
   const [create, setCreate] = useState(true)
+  const [serverMessage, setServerMessage] = useState('')
   const [logarUsuario, { isLoading, isError, error }] = useLogarUsuarioMutation()
-  const dispatch = useDispatch();
 
   const form = useFormik({
     initialValues: {
@@ -59,6 +59,19 @@ const Login = () => {
     return 'Erro desconhecido! Contatar o administrador.';
   }
 
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (isLoading) {
+      timer = setTimeout(() => {
+        setServerMessage('Aguarde um momento, estamos iniciando nosso servidor!');
+      }, 2500);
+    } else {
+      setServerMessage('');
+    }
+    return () => clearTimeout(timer);
+  }, [isLoading]);
+
   return (
     <S.Container>
       <S.Aside>
@@ -80,7 +93,9 @@ const Login = () => {
 
           <S.BtnEnter type="submit">{isLoading ? <Loader /> : 'Entrar'}</S.BtnEnter>
           <S.BtnCreate type="button" onClick={() => setCreate(false)}>{create ? 'Criar minha conta' : <Loader />}</S.BtnCreate>
+
           {isError && <S.Error isLogin={true}>{capturarError(error)}</S.Error>}
+          {!isError && isLoading && <S.Warning>{serverMessage}</S.Warning>}
         </S.Form>
       </S.Main>
     </S.Container>

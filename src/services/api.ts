@@ -13,14 +13,14 @@ const api = createApi({
     baseUrl: 'https://money-rush-backend.onrender.com/usuario/',
   }),
   endpoints: (builder) => ({
-    cadastrarUsuario: builder.mutation<Usuario, Usuario>({ // Retorna um Usuario
+    cadastrarUsuario: builder.mutation<Usuario, Usuario>({
       query: (user) => ({
         url: 'cadastrar',
         method: 'POST',
         body: user,
       }),
     }),
-    logarUsuario: builder.mutation<Usuario, { email: string; senha: string }>({ // Retorna um Usuario
+    logarUsuario: builder.mutation<Usuario, { email: string; senha: string }>({
       query: (credentials) => ({
         url: 'login',
         method: 'POST',

@@ -16,7 +16,7 @@ const Cadastrar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [back, setBack] = useState(true)
-  const [registerUser, { isLoading, isSuccess, isError, error }] = useCadastrarUsuarioMutation();
+  const [registerUser, { isLoading, isError, error }] = useCadastrarUsuarioMutation();
 
   const form = useFormik({
     initialValues: {
