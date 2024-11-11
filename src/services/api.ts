@@ -19,7 +19,7 @@ type Despesa = {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://money-rush-backend.onrender.com/',
+    baseUrl: 'http://localhost:8080/',
   }),
   endpoints: (builder) => ({
     cadastrarUsuario: builder.mutation<Usuario, Usuario>({

@@ -6,6 +6,10 @@ import { setDespesas } from '../../store/reducers/despesaSlice'
 import { setUsuario } from '../../store/reducers/usuarioSlice'
 import { useObterUsuarioQuery, useBuscarDespesasQuery } from '../../services/api'
 
+import more from '../../assets/images/moreIcon.png'
+
+import * as S from './styles'
+
 const Dashboard = () => {
 
   const dispatch = useDispatch();
@@ -28,20 +32,40 @@ const Dashboard = () => {
   }, [despesasLoaded, despesasData, dispatch]);
 
   return (
-    <div>
-      <h1>Bem-vindo, {usuario.nome}</h1>
-      <p>Email: {usuario.email}</p>
-      <p>Salário: {usuario.salario}</p>
-
-      <h2>Despesas</h2>
-      <ul>
-        {despesas.map((despesa) => (
-          <li key={despesa.id}>
-            {despesa.descricao} - {despesa.categoria} - R${despesa.valor} ({despesa.quantidade} unidades)
-          </li>
-        ))}
-      </ul>
-    </div>
+    <S.Container>
+      <S.Main>
+        <S.QuickAccess>
+          <S.Hello>
+            <p>Olá, {usuario.username}</p>
+            <span>Salário atual: {usuario.salario}</span>
+          </S.Hello>
+          <S.Add>
+            <img src={more} alt="Add new expense" />
+            <p>Adicionar gasto</p>
+          </S.Add>
+        </S.QuickAccess>
+        <S.DivBar>
+          <S.MoreInfo>
+            <S.Pay></S.Pay>
+            <S.Bank></S.Bank>
+          </S.MoreInfo>
+          <S.Expenses>
+            <ul>
+              {despesas.map((despesa) => (
+                <li key={despesa.id}>
+                  <S.Data>
+                    <S.Span>{despesa.categoria}</S.Span>
+                    <S.Span>{despesa.descricao}</S.Span>
+                    <S.Span>R$ {despesa.valor}</S.Span>
+                  </S.Data>
+                  <S.Row></S.Row>
+                </li>
+              ))}
+            </ul>
+          </S.Expenses>
+        </S.DivBar>
+      </S.Main>
+    </S.Container>
   )
 }
 
