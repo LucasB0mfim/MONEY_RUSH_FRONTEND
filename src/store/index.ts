@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import usuarioReducer from './reducers/usuarioSlice';
+
 import api from '../services/api';
+import usuarioReducer from './reducers/usuarioSlice';
+import despesaReducer from './reducers/despesaSlice';
 
 export const store = configureStore({
   reducer: {
     usuario: usuarioReducer,
+    despesa: despesaReducer,
     [api.reducerPath]: api.reducer
   },
   middleware: (getDefaultMiddleware) =>

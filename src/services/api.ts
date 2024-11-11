@@ -1,35 +1,51 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 type Usuario = {
-  id?: string;
+  id: string;
   nome: string;
   email: string;
   username: string;
-  senha: string;
+  salario: number;
+};
+
+type Despesa = {
+  id: string;
+  descricao: string;
+  valor: number;
+  quantidade: number;
+  data: string;
+  categoria: 'EDUCACAO' | 'ALIMENTACAO' | 'LAZER' | 'FASTFOOD' | 'MORADIA' | 'SAUDE' | 'SERVICO';
 };
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://money-rush-backend.onrender.com/usuario/',
+    baseUrl: 'http://localhost:8080/',
   }),
   endpoints: (builder) => ({
     cadastrarUsuario: builder.mutation<Usuario, Usuario>({
       query: (user) => ({
-        url: 'cadastrar',
+        url: 'usuario/cadastrar',
         method: 'POST',
         body: user,
       }),
     }),
     logarUsuario: builder.mutation<Usuario, { email: string; senha: string }>({
       query: (credentials) => ({
-        url: 'login',
+        url: 'usuario/login',
         method: 'POST',
         body: credentials,
       }),
     }),
+    // Endpoint para buscar informações do usuário
+    obterUsuario: builder.query<Usuario, string>({
+      query: (id) => `usuario/buscar/${id}`,
+    }),
+    // Endpoint para buscar despesas pelo usuarioId
+    buscarDespesas: builder.query<Despesa[], string>({
+      query: (usuarioId) => `despesa/buscar/${usuarioId}`,
+    }),
   }),
 });
 
-export const { useCadastrarUsuarioMutation, useLogarUsuarioMutation } = api;
-
+export const { useCadastrarUsuarioMutation, useLogarUsuarioMutation, useObterUsuarioQuery, useBuscarDespesasQuery } = api;
 export default api;
