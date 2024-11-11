@@ -39,10 +39,11 @@ const Dashboard = () => {
             <p>Olá, {usuario.username}</p>
             <span>Salário atual: {usuario.salario}</span>
           </S.Hello>
-          <S.Add>
-            <img src={more} alt="Add new expense" />
-            <p>Adicionar gasto</p>
-          </S.Add>
+          <S.Add></S.Add>
+          <S.Add></S.Add>
+          <S.Add></S.Add>
+          <S.Add></S.Add>
+          <S.Add></S.Add>
         </S.QuickAccess>
         <S.DivBar>
           <S.MoreInfo>

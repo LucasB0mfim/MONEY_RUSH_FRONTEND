@@ -32,6 +32,7 @@ export const QuickAccess = styled.div`
   padding: 2%;
 
   display: flex;
+  justify-content: space-between;
 
   border-radius: 1vw;
   background: #f9fbfa;
@@ -129,7 +130,6 @@ export const Hello = styled.div`
   width: 15%;
   height: 100%;
   padding: 2%;
-  margin-right: 2%;
 
   display: flex;
   text-align: center;
@@ -142,11 +142,12 @@ export const Hello = styled.div`
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
 
   p {
-    font-size: 140%;
+    font-size: 2vw;
     font-weight: bold;
   }
 
   span {
+    font-size: 1.3vw;
     font-weight: bold;
   }
 `
