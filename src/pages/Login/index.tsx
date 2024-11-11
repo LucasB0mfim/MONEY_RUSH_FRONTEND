@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
-import { useDispatch } from 'react-redux';
-import { setUsuario } from '../../store/reducers/usuarioSlice';
+import { useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { setUsuario } from '../../store/reducers/usuarioSlice'
 
 import Loader from '../../components/Loader'
 import { useLogarUsuarioMutation } from '../../services/api'
@@ -33,11 +33,8 @@ const Login = () => {
       try {
         const usuario = await logarUsuario({ email: values.email, senha: values.senha }).unwrap();
         console.log(usuario);
-
-        // Armazenando o usuário no Redux
         dispatch(setUsuario({ nome: usuario.nome, id: usuario.id, email: usuario.email, username: usuario.username, salario: usuario.salario }));
-
-        navigate(`/home/${usuario.id}`);
+        navigate(`/dashboard/${usuario.id}`);
       } catch (error) {
         console.error('Erro ao logar:', error);
       }

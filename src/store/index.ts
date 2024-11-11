@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit'
 
-import api from '../services/api';
-import usuarioReducer from './reducers/usuarioSlice';
-import despesaReducer from './reducers/despesaSlice';
+import api from '../services/api'
+import usuarioReducer from './reducers/usuarioSlice'
+import despesaReducer from './reducers/despesaSlice'
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +12,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
-});
+})
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

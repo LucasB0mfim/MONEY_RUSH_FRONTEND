@@ -1,9 +1,9 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom"
 
-import Login from "./pages/Login";
-import Cadastrar from "./pages/Cadastrar";
-import Cadastrado from "./pages/Cadastrado";
-import Home from "./pages/Home";
+import Login from "./pages/Login"
+import Cadastrar from "./pages/Cadastrar"
+import Cadastrado from "./pages/Cadastrado"
+import Dashboard from "./pages/Dashboard"
 
 const Rotas = () => (
   <Routes>
@@ -11,7 +11,7 @@ const Rotas = () => (
     <Route path="/access-account" element={ <Login /> } />
     <Route path="/create-account" element={ <Cadastrar /> } />
     <Route path="/registered-account" element={ <Cadastrado /> } />
-    <Route path="/home/:id" element={ <Home /> } />
+    <Route path="/dashboard/:id" element={ <Dashboard /> } />
   </Routes>
 )
 

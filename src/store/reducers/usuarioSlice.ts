@@ -1,6 +1,4 @@
-// usuarioSlice.ts
-
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type UsuarioState = {
   id: string | null;
@@ -8,7 +6,7 @@ type UsuarioState = {
   email: string | null;
   username: string | null;
   salario: number | null;
-};
+}
 
 const initialState: UsuarioState = {
   id: null,
@@ -16,17 +14,17 @@ const initialState: UsuarioState = {
   email: null,
   username: null,
   salario: null,
-};
+}
 
 const usuarioSlice = createSlice({
   name: 'usuario',
   initialState,
   reducers: {
     setUsuario: (state, action: PayloadAction<UsuarioState>) => {
-      return { ...state, ...action.payload };
-    },
-  },
-});
+      return { ...state, ...action.payload }
+    }
+  }
+})
 
-export const { setUsuario } = usuarioSlice.actions;
-export default usuarioSlice.reducer;
+export const { setUsuario } = usuarioSlice.actions
+export default usuarioSlice.reducer

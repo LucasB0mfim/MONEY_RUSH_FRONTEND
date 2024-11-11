@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 type Usuario = {
   id: string;
@@ -6,7 +6,7 @@ type Usuario = {
   email: string;
   username: string;
   salario: number;
-};
+}
 
 type Despesa = {
   id: string;
@@ -15,11 +15,11 @@ type Despesa = {
   quantidade: number;
   data: string;
   categoria: 'EDUCACAO' | 'ALIMENTACAO' | 'LAZER' | 'FASTFOOD' | 'MORADIA' | 'SAUDE' | 'SERVICO';
-};
+}
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/',
+    baseUrl: 'https://money-rush-backend.onrender.com/',
   }),
   endpoints: (builder) => ({
     cadastrarUsuario: builder.mutation<Usuario, Usuario>({
@@ -36,16 +36,20 @@ const api = createApi({
         body: credentials,
       }),
     }),
-    // Endpoint para buscar informações do usuário
     obterUsuario: builder.query<Usuario, string>({
       query: (id) => `usuario/buscar/${id}`,
     }),
-    // Endpoint para buscar despesas pelo usuarioId
     buscarDespesas: builder.query<Despesa[], string>({
       query: (usuarioId) => `despesa/buscar/${usuarioId}`,
-    }),
-  }),
-});
+    })
+  })
+})
 
-export const { useCadastrarUsuarioMutation, useLogarUsuarioMutation, useObterUsuarioQuery, useBuscarDespesasQuery } = api;
-export default api;
+export const {
+  useCadastrarUsuarioMutation,
+  useLogarUsuarioMutation,
+  useObterUsuarioQuery,
+  useBuscarDespesasQuery
+} = api
+
+export default api

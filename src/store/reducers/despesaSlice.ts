@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type Despesa = {
   id: string;
@@ -7,15 +7,15 @@ type Despesa = {
   quantidade: number;
   data: string;
   categoria: string;
-};
+}
 
 type DespesaState = {
   despesas: Despesa[];
-};
+}
 
 const initialState: DespesaState = {
   despesas: [],
-};
+}
 
 const despesaSlice = createSlice({
   name: 'despesa',
@@ -23,9 +23,9 @@ const despesaSlice = createSlice({
   reducers: {
     setDespesas: (state, action: PayloadAction<Despesa[]>) => {
       state.despesas = action.payload;
-    },
-  },
-});
+    }
+  }
+})
 
-export const { setDespesas } = despesaSlice.actions;
-export default despesaSlice.reducer;
+export const { setDespesas } = despesaSlice.actions
+export default despesaSlice.reducer
