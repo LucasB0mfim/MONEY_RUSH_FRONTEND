@@ -46,10 +46,6 @@ export const Container = styled.div`
 
   background-repeat: no-repeat;
   background-attachment: fixed;
-
-  //background: linear-gradient(140deg, ${colors.lightGold} 10%, ${colors.tangerina} 30%, ${colors.redPurpura} 60%);
-
-  // Talvez esse seja melhor:
   background: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 60%);
 
   @media(max-width: ${breakpoints.tablet}) {
