@@ -138,7 +138,6 @@ export const Hello = styled.div`
   p {
     font-size: 1.3vw;
     color: #919191;
-    margin-bottom: 2%;
   }
 
   span {
@@ -148,31 +147,61 @@ export const Hello = styled.div`
   }
 `
 
-export const TEST = styled.button`
+export const Historical = styled.div`
   width: 15%;
   height: 100%;
   padding: 2%;
 
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: space-between;
 
   cursor: pointer;
+  border-radius: 12px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 
-  border: none;
+  p {
+    font-size: 1.3vw;
+    color: #919191;
+  }
+
+  img {
+    width: 45%;
+  }
+
+  &:hover {
+    box-shadow:
+      inset 2px 2px 4px rgba(0, 0, 0, 0.35),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+  }
+`
+
+export const Limit = styled.div`
+  width: 15%;
+  height: 100%;
+  padding: 2%;
+
+  display: flex;
+  text-align: start;
+  flex-direction: column;
+  justify-content: space-between;
+
   border-radius: 1vw;
 
   background: #FFF;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 
-  img {
-    width: 40%;
-    cursor: pointer;
+  p {
+    font-size: 1.3vw;
+    color: #919191;
+    margin-bottom: 2%;
   }
 
-  p {
+  span {
+    font-size: 1.7vw;
     font-weight: bold;
+    color: green;
   }
 `
 
@@ -184,7 +213,7 @@ export const Pay = styled.div`
   display: flex;
   text-align: start;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 
   border-radius: 1vw;
 
@@ -226,151 +255,12 @@ export const Add = styled.button`
     width: 40%;
   }
 
-  transition: background-position 0.5s ease;
+  transition: all 1s ease;
 
   &:hover {
-    transition: background-position 0.5s ease;
-    background-image: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 60%);
+    transition: all 1s ease;
+    background-image: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 60%, ${colors.tangerina} 90%, ${colors.darkGold} 98%);
     background-position: 100% 100%;
   }
 `
 
-export const ContainerExpense = styled.div`
-  position: absolute;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  height: 100%;
-  padding: 2%;
-
-  top: 0;
-  left: 0;
-
-  backdrop-filter: brightness(10%);
-`
-
-export const AddExpense = styled.div`
-  width: 40%;
-  height: 100%;
-  padding: 4%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 0.3vw;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 60%);
-`
-
-export const DivExpense = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 8%;
-
-  display: flex;
-  align-items: start;
-  flex-direction: column;
-  justify-content: space-between;
-
-  background: ${colors.transparentBackground};
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.20);
-
-
-  > div {
-    width: 100%;
-    height: 20%;
-
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-
-    h2 {
-      color: ${colors.white};
-    }
-
-    img {
-      width: 100%;
-    }
-  }
-`
-
-export const ExitButton = styled.button`
-  width: 2vw;
-  height: 4vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
-
-  border: none;
-  background: transparent;
-`
-
-export const Form = styled.form`
-  width: 100%;
-  height: 80%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
-
-export const Select = styled.select`
-  width: 100%;
-  padding: 3%;
-  margin-bottom: 1.08%;
-  color: ${colors.white};
-
-  outline: none;
-  border: none;
-  border-radius: 0.3vw;
-  background: ${colors.transparentBlack};
-`
-
-export const option = styled.option`
-  color: #535353;
-
-  font-weight: bold;
-
-  background: ${colors.white};
-
-  border-radius: 0.3vw;
-`
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 3%;
-  margin-bottom: 1.08%;
-  color: ${colors.white};
-
-  outline: none;
-  border: none;
-  border-radius: 0.3vw;
-  background: ${colors.transparentBlack};
-
-  &::placeholder {
-    color: ${colors.transparentGray};
-  }
-`
-
-export const Btn = styled.button`
-  width: 100%;
-  padding: 3%;
-  font-size: 0.98vw;
-  color: ${colors.white};
-
-  cursor: pointer;
-
-  outline: none;
-  border: none;
-  border-radius: 0.3vw;
-  background: ${colors.red};
-`

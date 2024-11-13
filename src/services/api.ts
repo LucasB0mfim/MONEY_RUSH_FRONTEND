@@ -14,13 +14,14 @@ type Despesa = {
   valor: number;
   quantidade: number;
   data: string;
-  categoria: 'EDUCACAO' | 'ALIMENTACAO' | 'LAZER' | 'FASTFOOD' | 'MORADIA' | 'SAUDE' | 'SERVICO';
+  categoria: string;
+  // categoria: 'EDUCACAO' | 'ALIMENTACAO' | 'LAZER' | 'FASTFOOD' | 'MORADIA' | 'SAUDE' | 'SERVICO';
 }
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://money-rush-backend.onrender.com/',
-    // baseUrl: 'http://localhost:8080/',
+    // baseUrl: 'https://money-rush-backend.onrender.com/',
+    baseUrl: 'http://localhost:8080/',
   }),
   endpoints: (builder) => ({
     cadastrarUsuario: builder.mutation<Usuario, Usuario>({
@@ -28,6 +29,13 @@ const api = createApi({
         url: 'usuario/cadastrar',
         method: 'POST',
         body: user,
+      }),
+    }),
+    cadastrarDespesa: builder.mutation<Despesa, { usuarioId: string; despesa: Despesa }>({
+      query: ({ usuarioId, despesa }) => ({
+        url: `despesa/cadastrar/${usuarioId}`,
+        method: 'POST',
+        body: despesa,
       }),
     }),
     logarUsuario: builder.mutation<Usuario, { email: string; senha: string }>({
@@ -50,7 +58,8 @@ export const {
   useCadastrarUsuarioMutation,
   useLogarUsuarioMutation,
   useObterUsuarioQuery,
-  useBuscarDespesasQuery
+  useBuscarDespesasQuery,
+  useCadastrarDespesaMutation
 } = api
 
 export default api
