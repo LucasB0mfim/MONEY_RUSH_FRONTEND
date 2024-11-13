@@ -1,4 +1,4 @@
-import { Key, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../store'
@@ -92,18 +92,32 @@ const Dashboard = () => {
         {add ? (
           <></>
         ) : (
-          <S.AddExpense>
-            <S.DivExpense>
-              <h1>Adicionar novo gasto</h1>
-              <S.ExitButton onClick={() => setAdd(!add)}><img src={exit} alt='Exit' /></S.ExitButton>
-            </S.DivExpense>
-            <S.Form>
-              <S.Input type="text" placeholder='Digite a categoria' id='categoria' name='categoria' />
-              <S.Input type="text" placeholder='Digite sua descrição' id='descricao' name='descricao' />
-              <S.Input type="text" placeholder='Digite o valor' id='valor' name='valor' />
-              <S.BtnEnter type="button">Cadastrar</S.BtnEnter>
-            </S.Form>
-          </S.AddExpense>
+          <S.ContainerExpense>
+            <S.AddExpense>
+              <S.DivExpense>
+                <div>
+                  <h2>Adicionar novo<br />gasto</h2>
+                  <S.ExitButton onClick={() => setAdd(!add)}><img src={exit} alt='Exit' /></S.ExitButton>
+                </div>
+                <S.Form>
+                  <S.Select id="category" name="category" required>
+                      <S.option disabled selected>Categoria</S.option>
+                      <S.option value="EDUCACAO">EDUCACAO</S.option>
+                      <S.option value="ALIMENTACAO">ALIMENTACAO</S.option>
+                      <S.option value="LAZER">LAZER</S.option>
+                      <S.option value="FASTFOOD">FASTFOOD</S.option>
+                      <S.option value="MORADIA">MORADIA</S.option>
+                      <S.option value="SAUDE">SAUDE</S.option>
+                      <S.option value="SERVICO">SERVICO</S.option>
+                  </S.Select>
+                  <S.Input type="text" id="description" name="description" placeholder="Descreva o gasto" required />
+                  <S.Input type="number" id="value" name="value" placeholder="Digite o valor" step="0.01" required />
+                  <S.Input type="number" id="quantity" name="quantity" placeholder="Digite a quantidade" required min="1" />
+                  <S.Btn type="submit">Adicionar</S.Btn>
+                </S.Form>
+              </S.DivExpense>
+            </S.AddExpense>
+          </S.ContainerExpense>
         )}
       </S.Main>
     </S.Container>

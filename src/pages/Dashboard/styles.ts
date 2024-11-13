@@ -53,7 +53,7 @@ export const DivBar = styled.div`
 
 export const MoreInfo = styled.div`
   width: 42%;
-  height: 95%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@ export const Bank = styled.div`
 
 export const Expenses = styled.div`
   width: 55%;
-  height: 95%;
+  height: 100%;
   padding: 2%;
 
   border-radius: 1vw;
@@ -235,96 +235,142 @@ export const Add = styled.button`
   }
 `
 
-export const AddExpense = styled.div`
+export const ContainerExpense = styled.div`
   position: absolute;
-  width: 96%;
-  height: 90%;
-  padding: 2%;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  border-radius: 1vw;
+  width: 100%;
+  height: 100%;
+  padding: 2%;
 
+  top: 0;
+  left: 0;
+
+  backdrop-filter: brightness(10%);
+`
+
+export const AddExpense = styled.div`
+  width: 40%;
+  height: 100%;
+  padding: 4%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.3vw;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 60%);
-
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.20);
-
-  h1 {
-    font-size: 200%;
-    color: ${colors.white};
-  }
 `
 
 export const DivExpense = styled.div`
   width: 100%;
-  height: 8%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-
-export const ExitButton = styled.button`
-  width: 5%;
   height: 100%;
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: none;
-  border-radius: 1vw;
-  background: ${colors.transparentBlack};
-
-  img {
-    width: 40%;
-  }
-`
-
-export const Form = styled.form`
-  width: 60%;
-  height: 80%;
+  padding: 8%;
 
   display: flex;
   align-items: start;
   flex-direction: column;
-  justify-content: center;
-`
+  justify-content: space-between;
 
-export const Input = styled.input`
-  color: ${colors.white};
-  width: 100%;
-  padding: 3%;
-  font-size: 0.98vw;
+  background: ${colors.transparentBackground};
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.20);
 
-  outline: none;
-  margin-bottom: 1.08%;
-  border-radius: 1vw;
-  background: ${colors.transparentBlack};
-  border: none;
 
-  &::placeholder {
-    color: ${colors.white};
+  > div {
+    width: 100%;
+    height: 20%;
+
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+
+    h2 {
+      color: ${colors.white};
+    }
+
+    img {
+      width: 100%;
+    }
   }
 `
 
-export const BtnEnter = styled.button`
-  color: ${colors.white};
-  width: 100%;
-  padding: 3.2%;
+export const ExitButton = styled.button`
+  width: 2vw;
+  height: 4vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   cursor: pointer;
-  font-size: 90%;
-  font-weight: bold;
-  margin-top: 2vw;
 
   border: none;
-  border-radius: 1vw;
+  background: transparent;
+`
+
+export const Form = styled.form`
+  width: 100%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+export const Select = styled.select`
+  width: 100%;
+  padding: 3%;
+  margin-bottom: 1.08%;
+  color: ${colors.white};
+
+  outline: none;
+  border: none;
+  border-radius: 0.3vw;
   background: ${colors.transparentBlack};
+`
+
+export const option = styled.option`
+  color: #535353;
+
+  font-weight: bold;
+
+  background: ${colors.white};
+
+  border-radius: 0.3vw;
+`
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 3%;
+  margin-bottom: 1.08%;
+  color: ${colors.white};
+
+  outline: none;
+  border: none;
+  border-radius: 0.3vw;
+  background: ${colors.transparentBlack};
+
+  &::placeholder {
+    color: ${colors.transparentGray};
+  }
+`
+
+export const Btn = styled.button`
+  width: 100%;
+  padding: 3%;
+  font-size: 0.98vw;
+  color: ${colors.white};
+
+  cursor: pointer;
+
+  outline: none;
+  border: none;
+  border-radius: 0.3vw;
+  background: ${colors.red};
 `
