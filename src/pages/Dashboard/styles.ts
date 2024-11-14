@@ -75,6 +75,10 @@ export const Expenses = styled.div`
   height: 100%;
   padding: 2%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   border-radius: 1vw;
 
   background: #FFF;
@@ -101,6 +105,19 @@ export const Expenses = styled.div`
   }
 `
 
+export const Mouth = styled.div`
+  width: 100%;
+  padding: 1% 2%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #aaaaaa;
+  font-weight: 500;
+  font-size: 100%;
+`
+
 export const Data = styled.div`
   width: 100%;
   height: 100%;
@@ -112,7 +129,10 @@ export const Data = styled.div`
   justify-content: space-between;
 `
 
-export const Span = styled.span``
+export const Span = styled.span`
+  color: #aaaaaa;
+  font-weight: 500;
+`
 
 export const Row = styled.span`
 width: 100%;
@@ -131,12 +151,11 @@ export const Hello = styled.div`
   justify-content: center;
 
   border-radius: 1vw;
-
-  background: #FFF;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 
   p {
     font-size: 1.3vw;
+    font-weight: 500;
     color: #919191;
   }
 
@@ -157,6 +176,7 @@ export const Historical = styled.div`
   justify-content: space-between;
 
   cursor: pointer;
+  background: #FFF;
   border-radius: 12px;
   border: 1px solid rgba(17, 17, 17, 0.1);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
@@ -249,7 +269,7 @@ export const Add = styled.button`
 
   background-image: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 45%);
   background-size: 200% 200%;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 
   img {
     width: 40%;
@@ -261,6 +281,7 @@ export const Add = styled.button`
     transition: all 1s ease;
     background-image: linear-gradient(140deg, ${colors.darkGold} 0%, ${colors.tangerina} 20%, ${colors.redPurpura} 60%, ${colors.tangerina} 90%, ${colors.darkGold} 98%);
     background-position: 100% 100%;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.35), inset -2px -2px 4px rgba(255, 255, 255, 0.9);
   }
 `
 

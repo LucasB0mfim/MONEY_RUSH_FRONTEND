@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { RootState } from '../../store';
+import InputMask from 'react-input-mask'
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setDespesas } from '../../store/reducers/despesaSlice';
@@ -13,6 +14,7 @@ import * as S from './styles';
 const CadastrarGasto = ({ onClose }: { onClose: () => void }) => {
   const dispatch = useDispatch();
   const usuarioId = useSelector((state: RootState) => state.usuario.id);
+  const despesasAtuais = useSelector((state: RootState) => state.despesa.despesas); // Para pegar as despesas atuais do estado
   const [register, { isLoading, isError, error }] = useCadastrarDespesaMutation();
 
   if (!usuarioId) {
@@ -25,17 +27,17 @@ const CadastrarGasto = ({ onClose }: { onClose: () => void }) => {
     initialValues: {
       id: '',
       descricao: '',
-      valor: 0,
-      quantidade: 0,
+      valor: '',
+      quantidade: '',
       data: '',
       categoria: '',
     },
     validationSchema: yup.object({
-      descricao: yup.string().min(1, 'aaaaaaaaaaa?').required('Este campo é obrigatório.'),
-      valor: yup.number().min(1, 'Quanto você pagou?').required('Insira o preço'),
-      quantidade: yup.number().min(1, 'Quantas unidades você comprou?').required('Insira a quantidade.'),
-      data: yup.string().min(1, 'Insira a data de compra válida.').required('Insira a data de compra.'),
-      categoria: yup.string().min(1, 'Insira uma categoria válida').required('Insira a categoria.'),
+      descricao: yup.string().min(1).required('Este campo é obrigatório.'),
+      valor: yup.number().min(1).required('Este campo é obrigatório.'),
+      quantidade: yup.number().min(1).required('Este campo é obrigatório.'),
+      data: yup.string().min(1).required('Este campo é obrigatório.'),
+      categoria: yup.string().min(1).required('Este campo é obrigatório.'),
     }),
     onSubmit: async (values) => {
       try {
@@ -44,7 +46,7 @@ const CadastrarGasto = ({ onClose }: { onClose: () => void }) => {
           despesa: values,
         }).unwrap();
 
-        dispatch(setDespesas([{
+        dispatch(setDespesas([...despesasAtuais, {
           id: response.id,
           descricao: response.descricao,
           valor: response.valor,
@@ -52,6 +54,7 @@ const CadastrarGasto = ({ onClose }: { onClose: () => void }) => {
           data: response.data,
           categoria: response.categoria,
         }]));
+
         onClose();
       } catch (error) {
         console.error('Erro ao cadastrar despesa:', error);
@@ -69,28 +72,27 @@ const CadastrarGasto = ({ onClose }: { onClose: () => void }) => {
           </S.TopDiv>
           <S.Form onSubmit={form.handleSubmit}>
 
-            <S.Select id="categoria" name="categoria" value={form.values.descricao} onChange={form.handleChange} onBlur={form.handleBlur} >
-              <S.option disabled selected> CATEGORIA </S.option>
-              <S.option value="ALIMENTACAO">ALIMENTACAO</S.option>
-              <S.option value="EDUCACAO">EDUCACAO</S.option>
-              <S.option value="LAZER">LAZER</S.option>
-              <S.option value="FASTFOOD">FASTFOOD</S.option>
-              <S.option value="MORADIA">MORADIA</S.option>
-              <S.option value="SAUDE">SAUDE</S.option>
-              <S.option value="SERVICO">SERVICO</S.option>
+            <S.Select id="categoria" name="categoria" value={form.values.categoria} onChange={form.handleChange} onBlur={form.handleBlur} >
+              <S.option disabled selected value="" >CATEGORIA</S.option>
+              <S.option value="ALIMENTACAO">Alimentação</S.option>
+              <S.option value="EDUCACAO">Educação</S.option>
+              <S.option value="LAZER">Lazer</S.option>
+              <S.option value="FASTFOOD">Fastfood</S.option>
+              <S.option value="MORADIA">Casa</S.option>
+              <S.option value="SAUDE">Saúde</S.option>
+              <S.option value="SERVICO">Serviço</S.option>
             </S.Select>
 
-            <S.Input type="text" placeholder="O que você comprou?" id="descricao" name="descricao" value={form.values.descricao} onChange={form.handleChange} onBlur={form.handleBlur} />
+            <input type="text" placeholder="O que você comprou?" id="descricao" name="descricao" value={form.values.descricao} onChange={form.handleChange} onBlur={form.handleBlur} />
             {form.touched.descricao && form.errors.descricao && <S.Error>{form.errors.descricao}</S.Error>}
 
-            <S.Input
-              type="text" placeholder="Quanto você pagou?" id="valor" name="valor" value={form.values.valor} onChange={form.handleChange} onBlur={form.handleBlur} />
+            <input type="number" placeholder="Quanto você pagou?" id="valor" name="valor" value={form.values.valor} onChange={form.handleChange} onBlur={form.handleBlur} />
             {form.touched.valor && form.errors.valor && <S.Error>{form.errors.valor}</S.Error>}
 
-            <S.Input type="text" placeholder="Quantas unidades você comprou?" id="quantidade" name="quantidade" value={form.values.quantidade} onChange={form.handleChange} onBlur={form.handleBlur} />
+            <input type="number" placeholder="Quantas unidades você comprou?" id="quantidade" name="quantidade" value={form.values.quantidade} onChange={form.handleChange} onBlur={form.handleBlur} />
             {form.touched.quantidade && form.errors.quantidade && <S.Error>{form.errors.quantidade}</S.Error>}
 
-            <S.Input type="date" placeholder="Quando você comprou?" id="data" name="data" value={form.values.data} onChange={form.handleChange} onBlur={form.handleBlur} />
+            <InputMask mask="99/99/9999" type="text" placeholder="Quando você comprou?" id="data" name="data" value={form.values.data} onChange={form.handleChange} onBlur={form.handleBlur} />
             {form.touched.data && form.errors.data && <S.Error>{form.errors.data}</S.Error>}
 
             <S.Btn type="submit">Adicionar</S.Btn>

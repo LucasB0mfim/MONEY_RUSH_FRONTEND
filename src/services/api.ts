@@ -11,8 +11,8 @@ type Usuario = {
 type Despesa = {
   id: string;
   descricao: string;
-  valor: number;
-  quantidade: number;
+  valor: string;
+  quantidade: string;
   data: string;
   categoria: string;
 }

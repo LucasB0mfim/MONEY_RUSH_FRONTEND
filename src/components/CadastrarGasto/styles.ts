@@ -84,6 +84,22 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  input {
+    width: 100%;
+    padding: 3%;
+    margin-bottom: 1.08%;
+    color: ${colors.white};
+
+    outline: none;
+    border: none;
+    border-radius: 0.3vw;
+    background: ${colors.transparentBlack};
+
+    &::placeholder {
+      color: ${colors.transparentGray};
+    }
+  }
 `
 
 export const Select = styled.select`
@@ -106,22 +122,6 @@ export const option = styled.option`
   background: ${colors.white};
 
   border-radius: 0.3vw;
-`
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 3%;
-  margin-bottom: 1.08%;
-  color: ${colors.white};
-
-  outline: none;
-  border: none;
-  border-radius: 0.3vw;
-  background: ${colors.transparentBlack};
-
-  &::placeholder {
-    color: ${colors.transparentGray};
-  }
 `
 
 export const Btn = styled.button`
