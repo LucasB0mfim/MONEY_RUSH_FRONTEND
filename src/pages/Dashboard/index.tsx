@@ -34,11 +34,19 @@ const Dashboard = () => {
     }
   }
 
-  const calcularTotalDespesas = (): number => {
+  const gastoTotal = (): number => {
     const total = despesas.reduce((acumulador, despesa) => {
       return acumulador + despesa.valor
     }, 0)
     return total;
+  }
+
+  const limiteTotal = (): any => {
+    if (usuario.salario !== null) {
+      let salario = usuario.salario
+      const restante = salario - gastoTotal()
+      return restante
+    }
   }
 
   useEffect(() => {
@@ -72,11 +80,11 @@ const Dashboard = () => {
               </S.Historical>
               <S.Limit>
                 <p>Limite mensal</p>
-                <span>R$ 0.00</span>
+                <span>{limiteTotal()}</span>
               </S.Limit>
               <S.Pay>
                 <p>A pagar</p>
-                <span>R$ {calcularTotalDespesas().toFixed(2)}</span>
+                <span>R$ {gastoTotal().toFixed(2)}</span>
               </S.Pay>
               <S.Add onClick={() => setAdd(true)}>
                 <img src={more} alt='Add new expense' />
@@ -90,7 +98,7 @@ const Dashboard = () => {
               <S.Expenses>
                 <ul>
                   {despesas.map((despesa) => (
-                    <li key={despesa.id || 'default-id'}>
+                    <li key={despesa.id}>
                       <S.Data>
                         <S.Span>{despesa.categoria}</S.Span>
                         <S.Span>{despesa.descricao}</S.Span>

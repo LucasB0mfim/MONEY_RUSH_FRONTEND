@@ -15,13 +15,11 @@ type Despesa = {
   quantidade: number;
   data: string;
   categoria: string;
-  // categoria: 'EDUCACAO' | 'ALIMENTACAO' | 'LAZER' | 'FASTFOOD' | 'MORADIA' | 'SAUDE' | 'SERVICO';
 }
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://money-rush-backend.onrender.com/',
-    // baseUrl: 'http://localhost:8080/',
+    baseUrl: 'http://localhost:8080/',
   }),
   endpoints: (builder) => ({
     cadastrarUsuario: builder.mutation<Usuario, Usuario>({
