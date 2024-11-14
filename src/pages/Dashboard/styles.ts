@@ -87,6 +87,20 @@ export const Expenses = styled.div`
   display: flex;
   justify-content: center;
 
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  /* Largura da barra de rolagem */
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Cor do controle da barra de rolagem */
+  &::-webkit-scrollbar-thumb {
+    background: ${colors.redPurpura};
+    border-radius: 10px;
+  }
+
   ul {
     width: 100%;
     height: 100%;
@@ -116,6 +130,25 @@ export const Mouth = styled.div`
   color: #aaaaaa;
   font-weight: 500;
   font-size: 100%;
+`
+
+export const BtnMouth = styled.button`
+  height: 100%;
+  width: 5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  border: none;
+  outline: none;
+  background: ${colors.transparentBackground};
+
+  img {
+    width: 50%;
+  }
 `
 
 export const Data = styled.div`
